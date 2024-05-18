@@ -4,10 +4,10 @@ body {
 }
 .rectangle {
     margin-top: 15%;
-    width: 350px;
+    width: 30%;
     height: 8px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
     background-color: rgb(10,102,194);
 }
 
@@ -29,23 +29,23 @@ a {
 }
 input {
     height: 4%;
-    width: 160px;
+    width: 60%;
 }
 .name {
-    margin-left: 30px;
+    margin-left: 5%;
 }
 .mail {
-    margin-left: 33px;
+    margin-left: 6%;
 }
 .donate {
     margin-top: 30px;
     margin-bottom: 15%;
-    margin-left: 28%;
+    margin-left: 30%;
     background-color: rgb(10,102,194);
     border: none;
     color:white;
     height: 32px;
-    width: 150px;
+    width: 40%;
     font-size: 12px;
     font-weight: bold;
     border-radius: 16px;
