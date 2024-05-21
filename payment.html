@@ -14,7 +14,7 @@
               <li>About Us</li>
               <li class="ctn"></a>Account</li>
             </ul>
-            <img src="menu-btn.png" alt="menu" class="menu-btn">
+            <img src="menu-btn1.png" alt="menu" class="menu-btn">
         </nav>
         <div class="rectangle"></div>
         <div class="white-portion">
@@ -76,6 +76,14 @@
             rzp1.open();
             e.preventDefault();
         }
+        </script>
+        <script>
+            const menuBtn = document.querySelector('.menu-btn')
+            const navlinks = document.querySelector('.nav-links')
+        
+            menuBtn.addEventListener('click',()=>{
+              navlinks.classList.toggle('mobile-menu')
+            })
         </script>
     </body>
 </html>
