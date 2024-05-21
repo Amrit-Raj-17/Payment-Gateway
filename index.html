@@ -2,11 +2,22 @@
     <head>
         <link rel="stylesheet" href="style1.css">
         <link rel="icon" href="logo.png">
-        <title>Payment Gateway</title>
+        <title>Fast Pay</title>
     </head>
     <body>
+        <nav class="navbar">
+            <h1 class="logo">Fast Pay</h1>
+            <ul class="nav-links">
+                <a href="index.html"><li class="active">Home</li></a>
+              <li>Transactions</li>
+              <li>Recents</li>
+              <li>About Us</li>
+              <li class="ctn">Account</li>
+            </ul>
+            <img src="menu-btn.png" alt="menu" class="menu-btn">
+        </nav>
         <div class="rectangle"></div>
-        <div>
+        <div class="white-portion">
             <form action="">
                 <label for="name"> Name </label>
                 <input type="text" id="name" placeholder="John Snow" class="name" required><br><br>
@@ -17,50 +28,20 @@
                 <button class="donate">
                     Donate Now
                 </button>
-                </a>
+            </a>
         </div>
-        <button id="rzp-button1">Pay</button>
-        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <h1 class="blank"></h1>
+        <section class="footer">
+            <p>Sector II, Kolkata 700102, Kolkata, INDIA | Phone: 95085-47492 | Email: fast@pay.co.in</p>
+            <p>Copyright ©️ 2024 FastPay</p>
+        </section>
         <script>
-        var options = {
-            "key": "rzp_test_CGOtHzXKjg7f22",
-            "amount": "500", 
-            "currency": "INR",
-            "name": "Acme Corp", 
-            "description": "Test Transaction",
-            "image": "https://example.com/your_logo",
-            "order_id": "order_OC13WdogxgMKhR", 
-            "handler": function (response){
-                alert(response.razorpay_payment_id);
-                alert(response.razorpay_order_id);
-                alert(response.razorpay_signature)
-            },
-            "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information, especially their phone number
-                "name": "Amrit Raj", //your customer's name
-                "email": "amritraj@gmail.com", 
-                "contact": "9876543210"  //Provide the customer's phone number for better conversion rates 
-            },
-            "notes": {
-                "address": "Razorpay Corporate Office"
-            },
-            "theme": {
-                "color": "#3399cc"
-            }
-        };
-        var rzp1 = new Razorpay(options);
-        rzp1.on('payment.failed', function (response){
-                alert(response.error.code);
-                alert(response.error.description);
-                alert(response.error.source);
-                alert(response.error.step);
-                alert(response.error.reason);
-                alert(response.error.metadata.order_id);
-                alert(response.error.metadata.payment_id);
-        });
-        document.getElementById('rzp-button1').onclick = function(e){
-            rzp1.open();
-            e.preventDefault();
-        }
+            const menuBtn = document.querySelector('.menu-btn')
+            const navlinks = document.querySelector('.nav-links')
+        
+            menuBtn.addEventListener('click',()=>{
+              navlinks.classList.toggle('mobile-menu')
+            })
         </script>
     </body>
 </html>

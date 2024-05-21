@@ -1,20 +1,82 @@
 <html>
     <head>
         <link rel="stylesheet" href="style2.css">
+        <link rel="icon" href="logo.png">
         <title>Payment Page</title>
     </head>
     <body>
-        <a href="index.html">
-            <button type="button">
-                Go Back
-            </button>
-        </a>
-        <p>Enter amount</p>
-        <p>Select Payment Method</p>
-        <a href="confirm.html">
-            <button type="button">
-                Make Payment
-            </button>
-        </a>
+        <nav class="navbar">
+            <h1 class="logo">Fast Pay</h1>
+            <ul class="nav-links">
+              <a href="index.html"><li class="active">Home</li></a>
+              <li>Transactions</li>
+              <li>Recents</li>
+              <li>About Us</li>
+              <li class="ctn"></a>Account</li>
+            </ul>
+            <img src="menu-btn.png" alt="menu" class="menu-btn">
+        </nav>
+        <div class="rectangle"></div>
+        <div class="white-portion">
+            <form action="">
+                <h2 class="bill">Billing Address</h2>
+                <label for="name"> Name </label>
+                <input type="text" id="name" placeholder="John Snow" class="name" required><br><br>
+                <label for="mail" > Email </label>
+                <input type="email" id="mail" placeholder="example123@gmail.com" class="mail" required><br><br>
+                <label for="name"> Address </label>
+                <input type="text" id="name" placeholder="Sector 1, BidhanNagar" class="name1" required><br><br>
+                <label for="mail" > Zip Code </label>
+                <input type="number" id="mail" placeholder="123 456" class="mail1" required><br><br>
+                <label for="name"> City </label>
+                <input type="text" id="name" placeholder="Kolkata" class="name2" required><br><br>
+                <label for="mail" > State </label>
+                <input type="text" id="mail" placeholder="West Bengal" class="mail2" required>
+            </form>
+            <button class="donate" id="rzp-button1">Pay</button>
+        </div>
+        <h1 class="blank"></h1>
+        <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+        <script>
+        var options = {
+            "key": "rzp_test_CGOtHzXKjg7f22",  
+            "amount": "500000",
+            "currency": "INR",
+            "name": "Samsung Private Limited",
+            "description": "Test Transaction",
+            "image": "https://example.com/your_logo",
+            "order_id": "order_OCs5sVr7prUCXj", // "order_OCs9NHEsebnlJP", // Change this frequently
+            "handler": function (response){
+                alert(response.razorpay_payment_id);
+                alert(response.razorpay_order_id);
+                alert(response.razorpay_signature)
+            },
+            "prefill": {
+                "name": "Amrit Raj",
+                "email": "amritraj@gmail.com", 
+                "contact": "9876543210" 
+            },
+            "notes": {
+                "address": "Razorpay Corporate Office"
+            },
+            "theme": {
+                "color": "#3399cc"
+            }
+        };
+        var rzp1 = new Razorpay(options);
+        rzp1.on('payment.failed', function (response){
+                alert(response.error.code);
+                alert(response.error.description);
+                alert(response.error.source);
+                alert(response.error.step);
+                alert(response.error.reason);
+                alert(response.error.metadata.order_id);
+                alert(response.error.metadata.payment_id);
+        });
+        document.getElementById('rzp-button1').onclick = function(e){
+            rzp1.open();
+            e.preventDefault();
+        }
+        </script>
     </body>
 </html>
